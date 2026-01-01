@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        margin:0;
+        font-family:'Poppins', sans-serif;
+        background:linear-gradient(135deg, #000000, #1a1a1a);
+        color:#fff;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        overflow:hidden;
+    }
+
+    .card{
+        background:rgba(255,255,255,0.05);
+        border:1px solid rgba(255,215,0,0.4);
+        border-radius:20px;
+        padding:40px 30px;
+        text-align:center;
+        max-width:420px;
+        width:90%;
+        box-shadow:0 0 30px rgba(255,215,0,0.2);
+        animation:fadeIn 2s ease;
+    }
+
+    h1{
+        font-size:42px;
+        margin:0;
+        color:#ffd700;
+        letter-spacing:2px;
+    }
+
+    h2{
+        font-weight:300;
+        margin-top:10px;
+    }
+
+    p{
+        font-size:15px;
+        line-height:1.6;
+        margin-top:20px;
+        color:#e0e0e0;
+    }
+
+    .year{
+        font-size:60px;
+        font-weight:600;
+        margin:20px 0;
+        background:linear-gradient(45deg,#ffd700,#fff3b0);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        animation:glow 2s infinite alternate;
+    }
+
+    .footer{
+        margin-top:30px;
+        font-size:13px;
+        color:#aaa;
+    }
+
+    @keyframes glow{
+        from{ text-shadow:0 0 10px #ffd700; }
+        to{ text-shadow:0 0 25px #ffd700; }
+    }
+
+    @keyframes fadeIn{
+        from{ opacity:0; transform:translateY(30px); }
+        to{ opacity:1; transform:translateY(0); }
+    }
+
+    /* Floating stars */
+    .star{
+        position:absolute;
+        width:2px;
+        height:2px;
+        background:#ffd700;
+        animation:moveStar linear infinite;
+        opacity:0.8;
+    }
+
+    @keyframes moveStar{
+        from{ transform:translateY(0); }
+        to{ transform:translateY(100vh); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Stars -->
+<script>
+for(let i=0;i<40;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(star);
+}
+</script>
+
+<div class="card">
+    <h2>Welcome</h2>
+    <div class="year">2026</div>
+    <h1>Happy New Year</h1>
+
+    <p>
+        May the New Year bring new opportunities,  
+        positive energy, good health, and success  
+        in every step of your journey.
+    </p>
+
+    <p>
+        Let 2026 be a year of growth, learning,  
+        and beautiful moments.
+    </p>
+
+    <div class="footer">
+        ✨ Wishing you peace, happiness & success ✨
+    </div>
+</div>
+
+</body>
+</html>
