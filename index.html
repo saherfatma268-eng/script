@@ -9,124 +9,165 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-    body{
-        margin:0;
-        font-family:'Poppins', sans-serif;
-        background:linear-gradient(135deg, #000000, #1a1a1a);
-        color:#fff;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        overflow:hidden;
-    }
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#000,#1a1a1a);
+    color:#fff;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
 
-    .card{
-        background:rgba(255,255,255,0.05);
-        border:1px solid rgba(255,215,0,0.4);
-        border-radius:20px;
-        padding:40px 30px;
-        text-align:center;
-        max-width:420px;
-        width:90%;
-        box-shadow:0 0 30px rgba(255,215,0,0.2);
-        animation:fadeIn 2s ease;
-    }
+/* Card */
+.card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,215,0,0.5);
+    border-radius:22px;
+    padding:35px 30px;
+    text-align:center;
+    max-width:420px;
+    width:90%;
+    box-shadow:0 0 30px rgba(255,215,0,0.25);
+    animation:fadeIn 1.8s ease;
+}
 
-    h1{
-        font-size:42px;
-        margin:0;
-        color:#ffd700;
-        letter-spacing:2px;
-    }
+/* Logo / Name */
+.logo{
+    font-size:16px;
+    color:#ffd700;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
 
-    h2{
-        font-weight:300;
-        margin-top:10px;
-    }
+/* Headings */
+.year{
+    font-size:62px;
+    font-weight:600;
+    background:linear-gradient(45deg,#ffd700,#fff3b0);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glow 2s infinite alternate;
+}
 
-    p{
-        font-size:15px;
-        line-height:1.6;
-        margin-top:20px;
-        color:#e0e0e0;
-    }
+h1{
+    margin:10px 0;
+    color:#ffd700;
+}
 
-    .year{
-        font-size:60px;
-        font-weight:600;
-        margin:20px 0;
-        background:linear-gradient(45deg,#ffd700,#fff3b0);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        animation:glow 2s infinite alternate;
-    }
+p{
+    font-size:15px;
+    line-height:1.6;
+    color:#e0e0e0;
+}
 
-    .footer{
-        margin-top:30px;
-        font-size:13px;
-        color:#aaa;
-    }
+/* Buttons */
+.btn{
+    margin-top:15px;
+    padding:10px 18px;
+    border:none;
+    border-radius:25px;
+    background:#ffd700;
+    color:#000;
+    font-size:14px;
+    cursor:pointer;
+}
 
-    @keyframes glow{
-        from{ text-shadow:0 0 10px #ffd700; }
-        to{ text-shadow:0 0 25px #ffd700; }
-    }
+.btn:hover{
+    background:#ffea70;
+}
 
-    @keyframes fadeIn{
-        from{ opacity:0; transform:translateY(30px); }
-        to{ opacity:1; transform:translateY(0); }
-    }
+/* Footer */
+.footer{
+    margin-top:20px;
+    font-size:13px;
+    color:#aaa;
+}
 
-    /* Floating stars */
-    .star{
-        position:absolute;
-        width:2px;
-        height:2px;
-        background:#ffd700;
-        animation:moveStar linear infinite;
-        opacity:0.8;
-    }
+/* Animations */
+@keyframes glow{
+    from{ text-shadow:0 0 10px #ffd700; }
+    to{ text-shadow:0 0 25px #ffd700; }
+}
 
-    @keyframes moveStar{
-        from{ transform:translateY(0); }
-        to{ transform:translateY(100vh); }
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(30px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:8px;
+    height:8px;
+    top:-10px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
     }
+}
 </style>
 </head>
 
 <body>
 
-<!-- Stars -->
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-for(let i=0;i<40;i++){
-    let star=document.createElement("div");
-    star.className="star";
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
-    star.style.animationDuration=(3+Math.random()*5)+"s";
-    document.body.appendChild(star);
+/* Confetti */
+for(let i=0;i<80;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"%";
+    c.style.backgroundColor=["#ffd700","#ffffff","#ffcc00"][Math.floor(Math.random()*3)];
+    c.style.animationDuration=(3+Math.random()*4)+"s";
+    document.body.appendChild(c);
+}
+
+/* Music Toggle */
+function toggleMusic(){
+    let music=document.getElementById("bgMusic");
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
+}
+
+/* WhatsApp Share */
+function shareWhatsApp(){
+    let text="✨ Happy New Year 2026 ✨%0AMay this year bring success, peace and happiness 🌟";
+    window.open("https://wa.me/?text="+text,"_blank");
 }
 </script>
 
 <div class="card">
-    <h2>Welcome</h2>
+    <!-- Logo / School Name -->
+    <div class="logo">✨ Your School / Name Here ✨</div>
+
     <div class="year">2026</div>
     <h1>Happy New Year</h1>
 
     <p>
-        May the New Year bring new opportunities,  
-        positive energy, good health, and success  
-        in every step of your journey.
+        May 2026 bring new hopes,  
+        positive energy, success,  
+        and beautiful moments in life.
     </p>
 
-    <p>
-        Let 2026 be a year of growth, learning,  
-        and beautiful moments.
-    </p>
+    <button class="btn" onclick="toggleMusic()">🎵 Play / Pause Music</button><br>
+
+    <button class="btn" onclick="shareWhatsApp()">📲 Share on WhatsApp</button>
 
     <div class="footer">
-        ✨ Wishing you peace, happiness & success ✨
+        🌟 Wishing you happiness & success 🌟
     </div>
 </div>
 
